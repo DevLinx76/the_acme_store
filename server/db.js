@@ -6,8 +6,6 @@ const client = new pg.Client('postgres://localhost/the_acme_store_db');
 const uuid = require('uuid');
 const bcrypt = require('bcrypt');
 
-// Establish a connection to the database
-client.connect();
 
 // createTables method - drops and creates the tables for your application
 const createTables = async () => {
