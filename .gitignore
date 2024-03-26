@@ -1,0 +1,4 @@
+node_modules
+.env
+
+package-lock.json` file. This is a file that npm uses to keep track of the exact versions of all the packages that are installed in your project. This file is used to ensure that the same versions of packages are installed when you run `npm install` on another machine or when you deploy your project to a server.
