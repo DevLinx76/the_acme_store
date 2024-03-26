@@ -106,7 +106,7 @@ app.use((err, req, res, next)=> {
     res.status(err.status || 500).send({ error: err.message || err });
 } );
 
-
+// Start the server
 const init = async()=> {
     console.log('connecting to database...');
     await client.connect();
