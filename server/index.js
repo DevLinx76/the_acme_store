@@ -15,8 +15,6 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-// Client connects to the database
-client.connect();
 
 // create tables in the database
 app.post('/api/tables', async(req, res, next)=> {
@@ -108,7 +106,7 @@ app.use((err, req, res, next)=> {
 
 // Start the server
 const init = async()=> {
-    console.log('connecting to database...');
+    console.log('connecting to database');
     await client.connect();
     console.log('connected to database'); 
     await createTables();

@@ -66,25 +66,25 @@ const fetchProducts = async () => {
 };
 
 // fetchFavorites - returns an array favorites for a user
-const fetchFavorites = async (userId) => {
+const fetchFavorites = async (user_id) => {
     const SQL = 'SELECT * FROM favorites WHERE user_id = $1';
-    const response = await client.query(SQL, [userId]);
+    const response = await client.query(SQL, [user_id]);
     return response.rows;
 };
 
 // createFavorite - creates a favorite in the database and returns the created record
-const createFavorite = async ({ userId, productId }) => {
+const createFavorite = async ({ user_id, product_id }) => {
     const response = await client.query(
         'INSERT INTO favorites(id, user_id, product_id) VALUES($1, $2, $3) RETURNING *',
-        [uuid.v4(), userId, productId]
+        [uuid.v4(), user_id, product_id]
     );
     return response.rows[0];
 };
 
 // destroyFavorite - deletes a favorite in the database
-const destroyFavorite = async ({ userId, id }) => {
+const destroyFavorite = async ({ user_id, id }) => {
     const SQL = 'DELETE FROM favorites WHERE user_id = $1 AND id = $2';
-    await client.query(SQL, [userId, id]);
+    await client.query(SQL, [user_id, id]);
 };
 
 // export the client and methods
@@ -92,7 +92,7 @@ module.exports = {
     client,
     createTables,
     createFavorite,
-    createProducts,
+    createProduct,
     createUser,
     fetchFavorites,
     fetchUsers,
