@@ -143,4 +143,5 @@ const init = async()=> {
     });
 }
 
+init();
 
